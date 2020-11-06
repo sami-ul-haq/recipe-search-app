@@ -40,15 +40,14 @@ export default function App() {
   const [query, setQuery] = useState("chicken");
 
   useEffect(() => {
+    const getRecipe = async () => {
+      const response = await axios.get(
+        `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+      );
+      setRecipes(response.data.hits);
+    };
     getRecipe();
   }, [query]);
-
-  const getRecipe = async () => {
-    const response = await axios.get(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-    );
-    setRecipes(response.data.hits);
-  };
 
   const updateSearch = (e) => {
     setSearch(e.target.value);

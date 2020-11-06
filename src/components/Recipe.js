@@ -69,7 +69,9 @@ function Recipe({ title, calories, image, ingredient }) {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             {ingredient.map((item, index) => (
-              <Typography paragraph>{item.text}</Typography>
+              <Typography paragraph key={index}>
+                {item.text}
+              </Typography>
             ))}
           </CardContent>
         </Collapse>
